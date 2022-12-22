@@ -10,6 +10,17 @@ const Formulario = ({pedidos, setPedidos, pedido, setPedido}) => {
 
   const [error, setError] = useState(false)
 
+  useEffect(() => {
+    if(Object.keys(pedido).length > 0 ) {
+      setCliente(pedido.cliente)
+      setTelefono(pedido.telefono)
+      setEmail(pedido.email)
+      setFechaEntrega(pedido.fechaEntrega)
+      setDetalles(pedido.detalles)
+    }
+  }, [pedido])
+
+
   const generarId = () => {
     const random = Math.random().toString(36).substring(2);
     const fecha = Date.now().toString(36)
@@ -36,12 +47,22 @@ const Formulario = ({pedidos, setPedidos, pedido, setPedido}) => {
       telefono, 
       email, 
       fechaEntrega, 
-      detalles,
+      detalles
     }
 
-    //nuevo registro
-    objetoPedido.id = generarId();
-    setPedidos([...pedidos, objetoPedido]);
+    if(pedido.id) {
+        //editando registro
+        objetoPedido.id = pedido.id
+        const pedidosActualizados = pedidos.map( pedidoState => pedidoState.id === pedido.id ? objetoPedido : pedidoState)
+  
+        setPedidos(pedidosActualizados)
+        setPedido({})
+  
+      } else {
+        //nuevo registro
+        objetoPedido.id = generarId();
+        setPedidos([...pedidos, objetoPedido]);
+      }
   
 
     //reiniciar form
@@ -53,7 +74,7 @@ const Formulario = ({pedidos, setPedidos, pedido, setPedido}) => {
   }
     return (
         <div className="md:w-1/2 lg:w-2/5 mx-5">
-            <h2 className="font-black text-3xl text-center">Detalles del Pedido</h2>
+            <h2 className="font-bold text-3xl text-center">Detalles del Pedido</h2>
             <p className="text-lg mt-5 text-center mb-10">
                 Agregue Pedidos y {''}
                 <span className="text-purple-400 font-bold">Administrelos</span>
