@@ -1,5 +1,13 @@
-const Pedido = ({pedido, setPedido}) => {
+const Pedido = ({pedido, setPedido, eliminarPedido}) => {
   const { cliente, telefono, email, fechaEntrega, detalles, id } = pedido
+
+  const handleEliminar = () => {
+    const respuesta = confirm('Deseas eliminar este pedido?');
+
+    if(respuesta) {
+        eliminarPedido(id)
+    }
+}
 
 return (
   <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl">
@@ -33,6 +41,7 @@ return (
             <button 
                 type="button"
                 className="py-2 px-10 bg-pink-400 hover:bg-pink-600 text-white font-bold rounded-lg uppercase"
+                onClick={handleEliminar}
             >Eliminar</button>
         </div>
 

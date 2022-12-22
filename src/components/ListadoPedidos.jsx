@@ -1,7 +1,7 @@
 
 import Pedido from "./Pedido"
 
-const ListadoPedidos = ({pedidos, setPedido}) => {
+const ListadoPedidos = ({pedidos, setPedido, eliminarPedido}) => {
 
 
   return (
@@ -21,6 +21,7 @@ const ListadoPedidos = ({pedidos, setPedido}) => {
               key={pedido.id}
               pedido={pedido}
               setPedido={setPedido}
+              eliminarPedido={eliminarPedido}
             />
             ))}
         </>

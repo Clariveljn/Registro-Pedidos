@@ -9,6 +9,13 @@ function App() {
   const [pedidos, setPedidos] = useState([]);
   const [pedido, setPedido] = useState({});
 
+  const eliminarPedido = (id) => {
+    const pedidosActualizados = pedidos.filter(pedido => pedido.id !== id);
+
+    setPedidos(pedidosActualizados)
+
+  }
+
   return (
     <div className="container mx-auto mt-20">
       <Header/>
@@ -22,6 +29,7 @@ function App() {
         <ListadoPedidos 
         pedidos={pedidos}
         setPedido={setPedido}
+        eliminarPedido={eliminarPedido}
         />
       </div>  
     
