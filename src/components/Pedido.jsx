@@ -23,6 +23,18 @@ return (
           <span className="font-normal normal-case">{detalles}</span>
       </p>
 
+      <div className="flex justify-between mt-10">
+            <button 
+                type="button"
+                className="py-2 px-10 bg-purple-400 hover:bg-purple-600 text-white font-bold rounded-lg"
+            >Editar</button>
+
+            <button 
+                type="button"
+                className="py-2 px-10 bg-pink-400 hover:bg-pink-600 text-white font-bold rounded-lg"
+            >Eliminar</button>
+        </div>
+
   </div>
 )
 }
