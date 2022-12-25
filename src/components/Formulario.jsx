@@ -157,7 +157,7 @@ const Formulario = ({pedidos, setPedidos, pedido, setPedido}) => {
 
                 <input 
                     type="submit" 
-                    className="bg-pink-400 w-full p-3 text-white uppercase font-bold hover:bg-purple-400 cursor-pointer transition-all rounded-lg"
+                    className="bg-pink-400 w-full p-3 text-white uppercase font-bold hover:bg-pink-500 cursor-pointer transition-all rounded-lg"
                     value={pedido.id ? 'Editar Pedido' : 'Agregar Pedido'}
                     />
             </form>
