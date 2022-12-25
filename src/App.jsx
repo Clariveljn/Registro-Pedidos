@@ -3,11 +3,13 @@ import Header from "./components/Header";
 import Formulario from "./components/Formulario";
 import ListadoPedidos from "./components/ListadoPedidos";
 
-
-
 function App() {
-  const [pedidos, setPedidos] = useState([]);
+  const [pedidos, setPedidos] = useState(JSON.parse(localStorage.getItem('pedidos')) ?? []);
   const [pedido, setPedido] = useState({});
+
+  useEffect(() => {
+    localStorage.setItem('pedidos', JSON.stringify( pedidos ));
+  },[pedidos])
 
   const eliminarPedido = (id) => {
     const pedidosActualizados = pedidos.filter(pedido => pedido.id !== id);
